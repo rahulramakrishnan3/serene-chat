@@ -13,6 +13,6 @@ export class GenericHeaderComponent  implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {console.log('header data',this.headerData)}
+  ngOnInit() { }
 
 }
