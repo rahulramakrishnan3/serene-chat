@@ -15,7 +15,7 @@ export class Tab3Page {
 
   public header = {
     label: 'Chat list',
-    backButton: true
+    backButton: false
   }
   
   ngOnInit(){
