@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel, IonAvatar } from '@ionic/angular/standalone';
+import { IonContent, IonList, IonItem, IonLabel, IonAvatar, IonRefresher, IonRefresherContent } from '@ionic/angular/standalone';
 import { GenericHeaderComponent } from "../components/generic-header/generic-header.component";
 import { ChatListService } from '../services/chat/chat-list.service';
 
@@ -7,7 +7,7 @@ import { ChatListService } from '../services/chat/chat-list.service';
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, GenericHeaderComponent, IonList, IonItem, IonLabel, IonAvatar],
+  imports: [IonContent, GenericHeaderComponent, IonList, IonItem, IonLabel, IonAvatar, IonRefresher, IonRefresherContent],
 })
 export class Tab3Page {
   chatList: any[] | undefined;
@@ -19,8 +19,19 @@ export class Tab3Page {
   }
   
   ngOnInit(){
-    this.chatListService.getContacts().subscribe(value => {
+    this.getChatList();
+  }
+
+  getChatList(){
+    this.chatListService.getChatList().subscribe(value => {
       this.chatList = value;
-    })
+    });
+  }
+
+  handleRefresh(event: CustomEvent) {
+    setTimeout(() => {
+      this.getChatList();
+      (event.target as HTMLIonRefresherElement).complete();
+    }, 1000);
   }
 }

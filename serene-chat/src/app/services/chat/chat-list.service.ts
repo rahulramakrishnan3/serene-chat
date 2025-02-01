@@ -10,7 +10,7 @@ export class ChatListService {
 
   constructor(private http: HttpClient) { }
 
-  getContacts(): Observable<any[]> {
+  getChatList(): Observable<any[]> {
     return this.http.get<any[]>(this.jsonUrl);
   }
 }
