@@ -1,0 +1,9 @@
+.message-text {
+    display: block;
+    margin-top: 4px;
+    // color: var(--ion-color-danger);
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }

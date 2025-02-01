@@ -6,4 +6,21 @@
       <ion-title size="large">Tab 3</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-list>
+    @for (item of chatList; track item) {
+      <ion-item>
+        <ion-avatar slot="start">
+          <img alt="Silhouette of a person's head" src="{{item?.image || 'https://ionicframework.com/docs/img/demos/avatar.svg'}}"/>
+        </ion-avatar>
+        <ion-label>
+          <h3>{{item?.name || 'Serene user'}}</h3>
+          <p class="message-text">{{item?.message}}</p>
+        </ion-label>
+      </ion-item>
+      }
+     @empty {
+     // optional block to be displayed when collection is empty
+     }
+    
+  </ion-list>
 </ion-content>
